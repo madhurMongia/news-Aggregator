@@ -16,5 +16,9 @@ Content-Type: application/json
     "password": "test3@gmail.com"
 }
 ###
-GET http://127.0.0.1:8000/posts/
-Authorization: Token c210718331e3cddca830509f2d9d4da2c32b95e9
+GET http://127.0.0.1:8000/posts?page=1
+Authorization: Token 64c1171c91133a497ad4b573a9b788dd218eb7d8
+
+###
+GET http://127.0.0.1:8000/post/a-few-questions-about-the-impending-reddit-ipo
+Authorization: Token 64c1171c91133a497ad4b573a9b788dd218eb7d8

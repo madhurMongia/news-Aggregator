@@ -4,7 +4,7 @@ class TechPost(models.Model):
     headline= models.CharField(max_length = 500,blank = False)
     summary= models.TextField()
     story = models.TextField()
-    date_created= models.DateField(null=True)
+    date_created = models.DateField(null=False)
     slug = models.SlugField(primary_key=True ,unique=True,null=False)
     source = models.URLField()
     def __str__(self):
