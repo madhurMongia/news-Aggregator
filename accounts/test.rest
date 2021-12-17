@@ -20,5 +20,5 @@ GET http://127.0.0.1:8000/posts?page=1
 Authorization: Token 64c1171c91133a497ad4b573a9b788dd218eb7d8
 
 ###
-GET http://127.0.0.1:8000/post/a-few-questions-about-the-impending-reddit-ipo
-Authorization: Token 64c1171c91133a497ad4b573a9b788dd218eb7d8
+GET http://127.0.0.1:8000/post/france-latest-to-slap-clearview-ai-with-order-to-delete-data
+#Authorization: Token 64c1171c91133a497ad4b573a9b788dd218eb7d8
