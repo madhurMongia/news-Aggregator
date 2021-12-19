@@ -4,5 +4,6 @@ app_name = 'api'
 
 urlpatterns = [
     path('posts/', PostList.as_view(), name='posts'),
-    path('post/<slug:slug>', PostDetails.as_view(), name='post-detail'),
+    path('post/<str:category>/<slug:slug>',
+         PostDetails.as_view(), name='post-detail'),
 ]
