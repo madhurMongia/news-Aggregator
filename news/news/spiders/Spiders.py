@@ -2,6 +2,8 @@ from scrapy.spiders import Spider
 from scrapy.http import Request
 from ..items import TechNewsItem,EconomynewsItem,SportsNewsItem,MarketNewsItem
 import json
+from datetime import datetime
+from dateutil.relativedelta import relativedelta as timedelta
 class TechCrunchSpider(Spider):
     name = 'techCrunch'
     def start_requests(self):
@@ -85,11 +87,21 @@ class SportSpider(Spider):
         def parse_post(self,response):
             headline = response.css('.single-post__title::text').get()
             story = response.css('.single-post__content *::text').getall()
+            date = response.css('.single-post__info_date::text').get().split()
+            currDate = datetime.today()
+            print(date[1])
+            if date[1] == 'months':
+                print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!here")
+                currDate -= timedelta(months=int(date[0]))
+            elif date[1] == 'years':
+                currDate -= timedelta(years=int(date[0]))
+            elif date[1] == 'days':
+                currDate -= timedelta(days=int(date[0]))
             container = SportsNewsItem()
             container['headline'] = self.clear(headline)
             container['summary'] = self.get_summary(self.clear(story))
             container['story'] = ''.join(self.clear(story))
-            container['date_created'] = None
+            container['date_created'] = currDate.strftime("%Y-%m-%d")
             container['source'] = response.url
             yield container
         def get_summary(self,story):

@@ -16,9 +16,9 @@ Content-Type: application/json
     "password": "test3@gmail.com"
 }
 ###
-GET http://127.0.0.1:8000/posts?page=1&category=economy
+GET http://127.0.0.1:8000/posts?page=2&category=sports
 Authorization: Token 64c1171c91133a497ad4b573a9b788dd218eb7d8
 
 ###
-GET http://127.0.0.1:8000/post/economy/unholy-nexus-between-arcs-and-borrowers-found-after-it-raids-cbdt
+GET http://127.0.0.1:8000/post/sports/controversial-saudi-arabian-grand-prix-to-hit-the-floor-next-year-in-jeddah
 Authorization: Token 64c1171c91133a497ad4b573a9b788dd218eb7d8
