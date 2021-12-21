@@ -77,6 +77,7 @@ class PostDetails(GenericAPIView):
         return get_category.get(category)
         
     def get(self, request, slug,category):
+        print(request.build_absolute_uri())
         instance = get_object_or_404(self.get_model(category), slug=slug)
         queryset = self.get_model(category).objects.only(
             'slug', 'date_created').order_by("-date_created", 'pk')

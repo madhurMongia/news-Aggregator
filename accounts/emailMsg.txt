@@ -1,0 +1,5 @@
+Hi {{name|safe}},
+
+Please verify your account by clicking the link below:
+
+{{link|safe}}

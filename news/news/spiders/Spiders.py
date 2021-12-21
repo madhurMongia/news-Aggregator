@@ -1,10 +1,12 @@
 from scrapy.spiders import Spider
 from scrapy.http import Request
-from ..items import TechNewsItem,EconomynewsItem,SportsNewsItem,MarketNewsItem
+from news.items import TechNewsItem,EconomynewsItem,SportsNewsItem,MarketNewsItem
 import json
 from datetime import datetime
 from dateutil.relativedelta import relativedelta as timedelta
-class TechCrunchSpider(Spider):
+
+
+class TechSpider(Spider):
     name = 'techCrunch'
     def start_requests(self):
        cls = self.__class__

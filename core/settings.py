@@ -10,6 +10,8 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
+import os
+import sys
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -41,6 +43,8 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'rest_framework',
     'accounts',
+    'django_celery_beat',
+    'news',
 ]
 
 MIDDLEWARE = [
@@ -142,3 +146,8 @@ REST_FRAMEWORK = {
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_EMAIL_REQUIRED = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = "madhurrajput1010@gmail.com"
+EMAIL_HOST_PASSWORD = 'gllaequgqlnifprv'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True

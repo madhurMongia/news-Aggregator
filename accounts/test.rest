@@ -2,23 +2,26 @@ POST http://127.0.0.1:8000/user/register/
 Content-Type: application/json
 
 {
-    "email": "test3@gmail.com",
-    "user_name": "dev",
-    "password": "test3@gmail.com",
-    "password2": "test3@gmail.com"
+    "email": "madhurmongia33@gmail.com",
+    "user_name": "dev1",
+    "password": "test@gmail.com",
+    "password2": "test@gmail.com"
 }
 ###
-POST http://127.0.0.1:8000/user/login/
+POST http://127.0.0.1:7000/user/login/
 Content-Type: application/json
 
 {
-    "email": "test3@gmail.com",
-    "password": "test3@gmail.com"
+    "email": "madhurmongia33@gmail.com",
+    "password": "test@gmail.com"
 }
+
 ###
-GET http://127.0.0.1:8000/posts?page=2&category=sports
+GET http://127.0.0.1:7000/user/verify/2c5471051c282dde6d7a18d4f37b28cfd25cf533
+###
+GET http://127.0.0.1:7000/posts?page=2&category=sports
 Authorization: Token 64c1171c91133a497ad4b573a9b788dd218eb7d8
 
 ###
 GET http://127.0.0.1:8000/post/sports/controversial-saudi-arabian-grand-prix-to-hit-the-floor-next-year-in-jeddah
-Authorization: Token 64c1171c91133a497ad4b573a9b788dd218eb7d8
+#Authorization: Token 64c1171c91133a497ad4b573a9b788dd218eb7d8

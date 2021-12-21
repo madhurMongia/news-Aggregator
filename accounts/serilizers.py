@@ -34,7 +34,6 @@ class newTokenSerializer(AuthTokenSerializer):
     def validate(self,attrs):
         if attrs.get('email') and attrs.get('password'):
             user = authenticate(**attrs)
-            
             if not user:
                 msg = _('Unable to log in with provided credentials.')
                 raise serializers.ValidationError(msg, code='authorization')

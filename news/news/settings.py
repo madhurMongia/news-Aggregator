@@ -7,13 +7,17 @@
 #     https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 
+import django
+import sys
 BOT_NAME = 'news'
 import os
 from django.conf import settings
 SPIDER_MODULES = ['news.spiders']
 NEWSPIDER_MODULE = 'news.spiders'
 
-
+sys.path.append('..')
+os.environ['DJANGO_SETTINGS_MODULE'] = 'core.settings'
+django.setup()
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'news (+http://www.yourdomain.com)'
 
@@ -92,8 +96,3 @@ HTTPCACHE_STORAGE = 'scrapy_splash.SplashAwareFSCacheStorage'
 #HTTPCACHE_DIR = 'httpcache'
 #HTTPCACHE_IGNORE_HTTP_CODES = []
 #HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
-import sys
-sys.path.append('..')
-os.environ['DJANGO_SETTINGS_MODULE'] = 'core.settings'
-import django
-django.setup()

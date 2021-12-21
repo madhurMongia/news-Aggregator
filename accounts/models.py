@@ -6,14 +6,14 @@ from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin,BaseUs
 class CustomAccountManager(BaseUserManager):
     
     def create_superuser(self, email, user_name, password, **other_fields):
-        other_fields.setdefault('is_active', True)
+        other_fields.setdefault('is_active', False)
         if other_fields.get('is_superuser') is not True:
             raise ValueError(
             'Superuser must be assigned to is_superuser=True.')
         return self.create_user(email, user_name, password, **other_fields)
 
     def create_user(self, email, user_name, password, **other_fields):
-
+        other_fields.setdefault('is_active', False)
         if not email:
             raise ValueError(_('You must provide an email address'))
 
@@ -30,7 +30,7 @@ class newUser(PermissionsMixin,AbstractBaseUser):
     user_name = models.CharField(_('name'),max_length=150,unique=True)
     start_date = models.DateTimeField(default = timezone.now)
     
-    is_active = models.BooleanField(default=True)
+    is_active = models.BooleanField(default=False)
 
     objects = CustomAccountManager()
 
