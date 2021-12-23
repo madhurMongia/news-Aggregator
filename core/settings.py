@@ -83,8 +83,12 @@ WSGI_APPLICATION = 'core.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'hswewerj',
+        'USER' : 'hswewerj',
+        'PASSWORD' : 'xpmfU5BnqEaQfSsvQUl1mylSSAHnbTsZ',
+        'HOST' : 'john.db.elephantsql.com',
+        'PORT' : '5432'
     }
 }
 
@@ -151,3 +155,7 @@ EMAIL_HOST_USER = "madhurrajput1010@gmail.com"
 EMAIL_HOST_PASSWORD = 'gllaequgqlnifprv'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
+
+CELERY_BROKER_URL = 'redis://localhost:6379'
+
+CELERY_RESULT_BACKEND = 'redis://localhost:6379'

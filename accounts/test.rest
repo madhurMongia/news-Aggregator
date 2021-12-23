@@ -1,4 +1,4 @@
-POST http://127.0.0.1:8000/user/register/
+POST http://127.0.0.1:7000/user/register/
 Content-Type: application/json
 
 {
@@ -19,9 +19,11 @@ Content-Type: application/json
 ###
 GET http://127.0.0.1:7000/user/verify/2c5471051c282dde6d7a18d4f37b28cfd25cf533
 ###
-GET http://127.0.0.1:7000/posts?page=2&category=sports
-Authorization: Token 64c1171c91133a497ad4b573a9b788dd218eb7d8
+GET http://127.0.0.1:7000/posts?page=3&category=tech
+Authorization: Token a0908159ff6ecbb3cc726afcf916b709907afe99
 
 ###
-GET http://127.0.0.1:8000/post/sports/controversial-saudi-arabian-grand-prix-to-hit-the-floor-next-year-in-jeddah
-#Authorization: Token 64c1171c91133a497ad4b573a9b788dd218eb7d8
+GET http://127.0.0.1:7000/post/tech/patreon-cpo-says-the-company-will-double-in-size-in-2022
+Authorization: Token a0908159ff6ecbb3cc726afcf916b709907afe99
+###
+GET http://127.0.0.1:7000/scrape

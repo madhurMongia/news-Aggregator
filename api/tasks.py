@@ -20,5 +20,8 @@ def scraping_periodic_task():
     crawler_settings.setmodule(settings)
     process = CrawlerProcess(settings=crawler_settings)
     process.crawl(Spiders.TechSpider)
-    process.start
-    return Spiders.TechSpider
+    #process.crawl(Spiders.SportSpider)
+    #process.crawl(Spiders.EcoSpider)
+    #process.crawl(Spiders.MarketSpider)
+    #process.start
+    return process.start

@@ -1,14 +1,16 @@
 from django.db.models import query
 from rest_framework.generics import GenericAPIView
-from rest_framework.permissions import BasePermission
+from rest_framework.permissions import BasePermission,IsAdminUser
 from rest_framework.response import Response
 from .models import TechPost, EconomyPost, SportsPost, MarketPost
 from next_prev import next_in_order, prev_in_order
 from django.shortcuts import get_object_or_404
 from .serializers import PostSerializer
+from rest_framework.decorators import api_view,authentication_classes,permission_classes
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.exceptions import PermissionDenied, NotFound
-
+from celery.result import AsyncResult
+from .tasks import scraping_periodic_task
 def get_model(self):
         post_category = self.request.query_params.get('category', 'tech')
         get_category = {
@@ -62,7 +64,18 @@ class PostList(GenericAPIView):
             page, many=True, fields=('headline', 'summary', 'slug', 'date_created'),model = get_model(self))
         return self.get_paginated_response(serializer.data)
 
-
+@api_view(['GET'])
+#@permission_classes([IsAdminUser])
+def scrape(request):
+    print("scraping")
+    task = scraping_periodic_task.delay()
+    return Response({'id' : task.id})
+@api_view(['GET'])
+def get_task_status(request, task_id):
+    task = AsyncResult(task_id)
+    if task.state == 'SUCCESS':
+        return Response({'state' : 'SUCCESS'})
+    return Response({'state' : task.state})
 class PostDetails(GenericAPIView):
     serializer_class = PostSerializer
     def get_model(self,category):
